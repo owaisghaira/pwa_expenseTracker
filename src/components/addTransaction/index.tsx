@@ -1,42 +1,42 @@
-import React, { useState } from "react";
-// import { GlobalContext } from '../ContextStore/GlobalState'
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../../contextStore/globleState";
 
-const AddTransaction: React.FC = () => {
-  // const { addTransaction } = useContext(GlobalContext);
+const AddTransaction = () => {
+  const { addTransaction } = useContext(GlobalContext);
 
-  const [text, setText] = useState<string>("");
-  const [amount, setAmount] = useState<number>(0);
+  const [text, setText] = useState("");
+  const [amount, setAmount] = useState('0');
 
-  // const onSubmit = e => {
-  //     e.preventDefault();
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  //     const newTrans = {
-  //         id: Math.floor(Math.random() * 10),
-  //         text,
-  //         amount: +amount
-  //     }
-  //     addTransaction(newTrans)
-  //     clear()
-  // }
+    let newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      text: text,
+      amount: amount,
+    };
+
+    addTransaction(newTransaction);
+    clear();
+  };
   const clear = () => {
-      setAmount(0)
-      setText('')
-  }
+    setAmount("");
+    setText("");
+  };
   return (
     <>
       <h3>Add new transaction</h3>
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="form-control">
           <label>
             {" "}
             Enter Description <br />
           </label>
-
           <input
             type="text"
             required
             value={text}
-            onChange={(e:any) => setText(e.target.value)}
+            onChange={(e) => setText(e.target.value)}
             placeholder="Enter text..."
           />
         </div>
@@ -49,7 +49,7 @@ const AddTransaction: React.FC = () => {
             type="number"
             required
             value={amount}
-            onChange={(e: any) => setAmount(e.target.value)}
+            onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount..."
           />
         </div>

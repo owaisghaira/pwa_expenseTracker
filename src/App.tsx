@@ -5,7 +5,7 @@ import {
   Balance,
   Header,
   IncomeExpense,
-  TransactionList,
+  Transactions,
 } from "./components";
 import { GlobalProvider } from "./contextStore/globleState";
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
         <Header />
         <Balance />
         <IncomeExpense />
-        <TransactionList />
+        <Transactions />
         <AddTransaction />
       </div>
     </GlobalProvider>
