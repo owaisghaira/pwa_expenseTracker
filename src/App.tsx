@@ -13,7 +13,7 @@ const App = () => {
     <GlobalProvider>
       <div className="container">
         <Header />
-        <Balance />
+        {/* <Balance /> */}
         <IncomeExpense />
         <Transactions />
         <AddTransaction />
